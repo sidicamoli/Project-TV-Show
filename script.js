@@ -1,57 +1,46 @@
-// ...existing code...
 function setup() {
-  const allEpisodes = getAllEpisodes();
+  const allEpisodes = getAllEpisodes(); // This gives you all 73 episodes
   makePageForEpisodes(allEpisodes);
 }
-// ...existing code...
 
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
-  rootElem.innerHTML = ""; // Clear previous content
+  rootElem.innerHTML = "";
 
-  // Only show 6 episodes
-  const sixEpisodes = episodeList.slice(0, 6);
+  for (let episode of episodeList) {
+    const card = document.createElement("div");
+    card.className = "episode-card";
 
-  sixEpisodes.forEach((episode) => {
-    const episodeContainer = document.createElement("div");
-    episodeContainer.classList.add("episode-card");
+    const title = document.createElement("h2");
+    const code = `S${String(episode.season).padStart(2, "0")}E${String(
+      episode.number
+    ).padStart(2, "0")}`;
+    title.textContent = `${code} - ${episode.name}`;
 
-  // ...existing code...
-// Title with zero-padded episode code
-const title = document.createElement("h2");
-const episodeCode = `S${String(episode.season).padStart(2, "0")}E${String(episode.number).padStart(2, "0")}`;
-title.textContent = `${episode.name} - ${episodeCode}`;
-// ...existing code...
+    const img = document.createElement("img");
+    img.src = episode.image.medium;
+    img.alt = episode.name;
 
-    // Image
-    const image = document.createElement("img");
-    image.src = episode.image.medium;
-    image.alt = episode.name;
-
-    // Summary (HTML)
     const summary = document.createElement("div");
     summary.innerHTML = episode.summary;
 
-    // Link to TVMaze
     const link = document.createElement("a");
     link.href = episode.url;
-    link.textContent = "View on TVMaze";
     link.target = "_blank";
+    link.textContent = "View on TVMaze";
 
-    // Append all to episode container
-    episodeContainer.appendChild(title);
-    episodeContainer.appendChild(image);
-    episodeContainer.appendChild(summary);
-    episodeContainer.appendChild(link);
+    card.appendChild(title);
+    card.appendChild(img);
+    card.appendChild(summary);
+    card.appendChild(link);
 
-    rootElem.appendChild(episodeContainer);
-  });
+    rootElem.appendChild(card);
+  }
 
-  // Add TVMaze credit
   const credit = document.createElement("p");
   credit.innerHTML =
     'Data from <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>';
   rootElem.appendChild(credit);
 }
 
-window.onload = setup; 
+window.onload = setup;
