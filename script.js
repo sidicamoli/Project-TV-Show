@@ -3,12 +3,15 @@
 // - Extracted card-building logic into `createEpisodeCard(episode)`
 // - Improved modularity for future features (search, selector)
 
+let allEpisodes = [];
+
 function setup() {
-  const allEpisodes = getAllEpisodes(); // This gives you all 73 episodes
-  renderEpisodes(allEpisodes); //Renamed from makePageForEpisodes
+  allEpisodes = getAllEpisodes();
+  renderEpisodes(allEpisodes); // Show all episodes initially
+  setupSearch();               // Set up live search
 }
 
-// Renders all episodes and adds attribution link
+
 function renderEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
@@ -22,6 +25,11 @@ function renderEpisodes(episodeList) {
   credit.innerHTML =
     'Data from <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>';
   rootElem.appendChild(credit);
+
+  const countElem = document.getElementById("search-count");
+  if (countElem) {
+    countElem.textContent = `Displaying ${episodeList.length} / ${allEpisodes.length} episodes`;
+  }
 }
 
 // Creates a single episode card from an episode object
@@ -55,5 +63,30 @@ function createEpisodeCard(episode) {
 
   return card;
 }
+//  Filters episodes by name or summary based on search term
+
+function filterEpisodes(searchTerm, episodes) {
+  const lowerSearch = searchTerm.toLowerCase();
+  return episodes.filter(ep => {
+    const code = `S${String(ep.season).padStart(2, "0")}E${String(ep.number).padStart(2, "0")}`;
+    return (
+      ep.name.toLowerCase().includes(lowerSearch) ||
+      ep.summary.toLowerCase().includes(lowerSearch) ||
+      code.toLowerCase().includes(lowerSearch)
+    );
+  });
+}
+
+//  Sets up live search functionality
+function setupSearch() {
+  const input = document.getElementById("search-input");
+  input.addEventListener("input", () => {
+    const searchTerm = input.value.trim();
+    const filtered = filterEpisodes(searchTerm, allEpisodes);
+    renderEpisodes(filtered);
+  });
+}
 
 window.onload = setup;
+
+
