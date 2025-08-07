@@ -1,16 +1,16 @@
 // === Refactored by Hendrine Zeraua for Level 200 ===
-// - Renamed `makePageForEpisodes` to `renderEpisodes` for clarity
-// - Extracted card-building logic into `createEpisodeCard(episode)`
-// - Improved modularity for future features (search, selector)
+// - Renamed makePageForEpisodes → renderEpisodes
+// - Extracted card-building logic into createEpisodeCard()
+// - Added search + episode selector dropdown functionality
 
 let allEpisodes = [];
 
 function setup() {
   allEpisodes = getAllEpisodes();
-  renderEpisodes(allEpisodes); // Show all episodes initially
-  setupSearch();               // Set up live search
+  renderEpisodes(allEpisodes);
+  setupSearch();
+  setupEpisodeSelector();
 }
-
 
 function renderEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
@@ -32,11 +32,10 @@ function renderEpisodes(episodeList) {
   }
 }
 
-// Creates a single episode card from an episode object
 function createEpisodeCard(episode) {
   const card = document.createElement("div");
   card.className = "episode-card";
-  card.id = `episode-${episode.id}`; // helpful for jumping later
+  card.id = `episode-${episode.id}`;
 
   const title = document.createElement("h2");
   const code = `S${String(episode.season).padStart(2, "0")}E${String(
@@ -63,7 +62,6 @@ function createEpisodeCard(episode) {
 
   return card;
 }
-//  Filters episodes by name or summary based on search term
 
 function filterEpisodes(searchTerm, episodes) {
   const lowerSearch = searchTerm.toLowerCase();
@@ -77,13 +75,39 @@ function filterEpisodes(searchTerm, episodes) {
   });
 }
 
-//  Sets up live search functionality
 function setupSearch() {
   const input = document.getElementById("search-input");
   input.addEventListener("input", () => {
     const searchTerm = input.value.trim();
     const filtered = filterEpisodes(searchTerm, allEpisodes);
     renderEpisodes(filtered);
+  });
+}
+
+function setupEpisodeSelector() {
+  const select = document.getElementById("episode-select");
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "all";
+  defaultOption.textContent = "Show All Episodes";
+  select.appendChild(defaultOption);
+
+  allEpisodes.forEach((ep) => {
+    const option = document.createElement("option");
+    const code = `S${String(ep.season).padStart(2, "0")}E${String(ep.number).padStart(2, "0")}`;
+    option.value = ep.id;
+    option.textContent = `${code} - ${ep.name}`;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", (event) => {
+    const selectedId = event.target.value;
+    if (selectedId === "all") {
+      renderEpisodes(allEpisodes);
+    } else {
+      const selected = allEpisodes.find((ep) => ep.id === Number(selectedId));
+      renderEpisodes([selected]);
+    }
   });
 }
 

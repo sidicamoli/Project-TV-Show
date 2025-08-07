@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Mohamed Ibrahim (sidicamoli)</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
 
-    <body>
-    
-      <!--  Live Search and Episode Count Display -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Show Project | Mohamed Ibrahim (sidicamoli)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
 
-      <div class="search-container">
-        <!-- Input field for filtering episodes by name or summary -->
-        <input type="text" id="search-input" placeholder="Search episodes..." />
-    
-        <!-- Displays the number of matching episodes out of total -->
-        <p id="search-count">Displaying 73 / 73 episodes</p>
-      </div>
-    
-      <!-- Container for rendering all episode cards -->
-      <div id="root"></div>
-    
-      <!-- Load the episode data provided by CodeYourFuture -->
-      <script src="episodes.js"></script>
-    
-      <!-- Load the custom JavaScript logic (your code) -->
-      <script src="script.js"></script>
-    
-     </body>
-</html>            
-            
+<body>
+
+  <div class="search-container">
+    <select id="episode-select">
+      <option value="all">Show All Episodes</option>
+    </select>
+
+    <input type="text" id="search-input" placeholder="Search episodes..." />
+    <p id="search-count">Displaying 73 / 73 episodes</p>
+  </div>
+
+  <div id="root"></div>
+
+  <script src="episodes.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
+
