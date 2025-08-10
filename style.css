@@ -17,23 +17,25 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  padding: 1rem;
   box-sizing: border-box;
+}
+
+.episode-title-bar {
+  background-color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
 .episode-card img {
   width: 100%;
-  border-radius: 8px;
-}
-
-.episode-card h2 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  border-radius: 0 0 8px 8px;
 }
 
 .episode-card a {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin: 0.5rem;
   color: #0077cc;
   text-decoration: none;
 }
@@ -42,49 +44,20 @@ body {
   text-decoration: underline;
 }
 
-/* === Search & Selector Container Styling (Refined for Level 200) === */
+/* Search and selector aligned left */
 .search-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
-#search-input {
-  padding: 0.6rem;
-  width: 60%;
-  max-width: 400px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #007acc;
-  box-shadow: 0 2px 5px rgba(0, 122, 204, 0.1);
-  outline-color: #007acc;
-}
-
-#search-input::placeholder {
-  color: #007acc;
-  font-style: italic;
-}
-
-#search-count {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-}
-
+#search-input,
 #episode-select {
   padding: 0.6rem;
-  min-width: 240px;
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #007acc;
-  box-shadow: 0 2px 5px rgba(0, 122, 204, 0.1);
   outline-color: #007acc;
-  background-color: white;
-  color: #333;
 }
-
