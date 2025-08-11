@@ -1,11 +1,12 @@
+
 body {
   font-family: sans-serif;
   background-color: #f5f5f5;
-  padding: 1rem;
   margin: 0;
+  padding: 1rem;
 }
 
-/* Align selector/search/count with grid */
+
 .search-container {
   display: flex;
   align-items: center;
@@ -13,86 +14,107 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Selector */
 #episode-select {
   width: 240px;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 6px;
-  border: 2px solid #222;
+  border: 2px solid #000;
+  /* keep black border look */
 }
 
-/* Search box */
 #search-input {
-  width: 180px;
+  width: 220px;
   padding: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 6px;
-  border: 2px solid #222;
+  border: 2px solid #000;
+  /* keep black border look */
 }
 
-/* Count text */
 #search-count {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #333;
   white-space: nowrap;
+  margin: 0;
 }
 
-/* Grid layout — 3 columns that fill available width */
+
 #root {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-/* Episode card */
+
 .episode-card {
   background: #fff;
-  border: 2px solid #222;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 2px solid #000;
+  /* black border */
+  border-radius: 8px;
+  
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   overflow: hidden;
 }
 
-/* Title bar */
 .episode-title-bar {
   background: #fff;
-  border-bottom: 2px solid #222;
-  padding: 1em 0.5em;
+  border-bottom: 2px solid #000;
+  
+  padding: 0.75rem;
   text-align: center;
-  font-size: 1.15rem;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
+  font-size: 1.05rem;
 }
 
-/* Image */
 .episode-card img {
   width: 100%;
-  border-radius: 0;
-  margin: 1rem auto;
   display: block;
+  margin: 0.75rem auto;
 }
 
-/* Summary */
 .episode-summary {
-  font-size: 1rem;
-  color: #444;
-  padding: 0 0.5em;
-  text-align: left;
+  padding: 0 0.75rem 0.75rem;
+  color: #222;
+  font-size: 0.95rem;
 }
 
-/* Link */
 .episode-card a {
-  margin: 1em auto 0 auto;
+  margin: 0.5rem auto 1rem;
   color: #1a0dab;
   text-decoration: underline;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-align: center;
   display: block;
+}
+
+
+@media (max-width: 900px) {
+  #root {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #root {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+#episode-select:focus-visible,
+#search-input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
 }
