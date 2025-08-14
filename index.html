@@ -10,24 +10,31 @@
 </head>
 
 <body>
-  
   <h1 class="visually-hidden">TV Show Episodes</h1>
 
-  <div class="search-container" role="region" aria-label="Episode controls">
+  <div class="search-container" role="region" aria-label="Page controls">
+    
+    <label for="show-select" class="visually-hidden">Choose a TV show</label>
+    <select id="show-select" aria-label="Choose a TV show">
+      <option value="" disabled selected>Loading shows…</option>
+    </select>
+
+    
     <label for="episode-select" class="visually-hidden">Jump to episode</label>
-    <select id="episode-select">
+    <select id="episode-select" aria-label="Jump to episode">
       <option value="all">Show All Episodes</option>
     </select>
 
+    
     <label for="search-input" class="visually-hidden">Search episodes</label>
     <input type="text" id="search-input" placeholder="Search episodes..." />
 
+    
     <p id="search-count" aria-live="polite">Displaying 0 / 0 episodes</p>
   </div>
 
-  
   <main id="main" role="main">
-    <div id="root">Loading episodes...</div>
+    <div id="root">Loading…</div>
   </main>
 
   <script src="script.js"></script>

@@ -14,22 +14,26 @@ body {
   margin-bottom: 1.5rem;
 }
 
-#episode-select {
-  width: 240px;
+
+#show-select,
+#episode-select,
+#search-input {
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 6px;
   border: 2px solid #000;
-  /* keep black border look */
+}
+
+#show-select {
+  width: 260px;
+}
+
+#episode-select {
+  width: 240px;
 }
 
 #search-input {
   width: 220px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 2px solid #000;
-  /* keep black border look */
 }
 
 #search-count {
@@ -38,7 +42,6 @@ body {
   white-space: nowrap;
   margin: 0;
 }
-
 
 #root {
   display: grid;
@@ -52,7 +55,6 @@ body {
   border: 2px solid #000;
   /* black border */
   border-radius: 8px;
-  
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -61,7 +63,6 @@ body {
 .episode-title-bar {
   background: #fff;
   border-bottom: 2px solid #000;
-  
   padding: 0.75rem;
   text-align: center;
   font-weight: bold;
@@ -112,6 +113,7 @@ body {
   white-space: nowrap;
 }
 
+#show-select:focus-visible,
 #episode-select:focus-visible,
 #search-input:focus-visible,
 a:focus-visible {
