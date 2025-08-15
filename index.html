@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,17 +8,37 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
+
 <body>
-  <div class="search-container">
-    <select id="episode-select">
+  <h1 class="visually-hidden">TV Show Episodes</h1>
+
+  <div class="search-container" role="region" aria-label="Page controls">
+    
+    <label for="show-select" class="visually-hidden">Choose a TV show</label>
+    <select id="show-select" aria-label="Choose a TV show">
+      <option value="" disabled selected>Loading shows…</option>
+    </select>
+
+    
+    <label for="episode-select" class="visually-hidden">Jump to episode</label>
+    <select id="episode-select" aria-label="Jump to episode">
       <option value="all">Show All Episodes</option>
     </select>
+
+    
+    <label for="search-input" class="visually-hidden">Search episodes</label>
     <input type="text" id="search-input" placeholder="Search episodes..." />
-    <p id="search-count">Displaying 0 / 0 episodes</p>
+
+    
+    <p id="search-count" aria-live="polite">Displaying 0 / 0 episodes</p>
   </div>
 
-  <div id="root">Loading episodes...</div>
+  <main id="main" role="main">
+    <div id="root">Loading…</div>
+  </main>
 
   <script src="script.js"></script>
 </body>
+
 </html>
+
