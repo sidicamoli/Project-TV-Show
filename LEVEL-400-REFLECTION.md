@@ -1,6 +1,6 @@
 Level 500 Code Comparison – Mohamed Ibrahim 
 
-Comparing my Level 400 Pull Request with my partner "Hendrine Zeraua" Pull Request.
+Comparing my Level 400 Pull Request with my partner "Hendrine Zeraua" Pull Request..
 
 1- How is it different?
    • Their code uses a more compact layout and slightly different styling choices.
