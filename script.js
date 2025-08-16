@@ -17,7 +17,8 @@ function setupEpisodeControls(episodes) {
 
   const episodeSelect = document.createElement("select");
   episodeSelect.id = "episode-select";
-  episodeSelect.innerHTML = `<option value="" disabled selected>Jump to episode...</option>` +
+  episodeSelect.innerHTML =
+    `<option value="" disabled selected>Jump to episode...</option>` +
     episodes.map(ep => {
       const code = formatEpisodeCode(ep);
       return `<option value="${code}">${code} - ${ep.name}</option>`;
@@ -121,7 +122,8 @@ function highlightText(text, query) {
 
 function populateShowDropdown(shows, query = "") {
   const showSelect = document.getElementById("showSelect");
-  showSelect.innerHTML = `<option value="" disabled selected>Select a show...</option>` +
+  showSelect.innerHTML =
+    `<option value="" disabled selected>Select a show...</option>` +
     shows.map(show => {
       const highlightedName = highlightText(show.name, query);
       return `<option value="${show.id}">${highlightedName}</option>`;
@@ -160,13 +162,13 @@ function showShowsListing() {
     );
 
     updateShowCount(filteredShows.length);
-
     renderShowCards(filteredShows, query);
 
     if (query) {
       showSelect.style.display = "inline-block";
       populateShowDropdown(filteredShows, query);
-      showSelect.selectedIndex = 1;
+      // 🔥 Removed buggy auto-selection line
+      // showSelect.selectedIndex = 1;
     } else {
       showSelect.style.display = "none";
     }
@@ -235,7 +237,6 @@ async function setup() {
 }
 
 window.onload = setup;
-
 
 
 
