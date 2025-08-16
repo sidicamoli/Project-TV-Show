@@ -167,8 +167,6 @@ function showShowsListing() {
     if (query) {
       showSelect.style.display = "inline-block";
       populateShowDropdown(filteredShows, query);
-      // 🔥 Removed buggy auto-selection line
-      // showSelect.selectedIndex = 1;
     } else {
       showSelect.style.display = "none";
     }
@@ -210,8 +208,9 @@ function renderShowCards(shows, query = "") {
       </div>
     `;
 
+    // ✅ FIXED: use currentTarget to ensure correct data-id
     card.querySelector(".show-title").addEventListener("click", e =>
-      loadEpisodes(e.target.dataset.id)
+      loadEpisodes(e.currentTarget.dataset.id)
     );
 
     fragment.appendChild(card);
@@ -237,6 +236,7 @@ async function setup() {
 }
 
 window.onload = setup;
+
 
 
 
