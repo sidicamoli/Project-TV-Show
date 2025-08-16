@@ -215,8 +215,9 @@ function renderShowCards(shows, query = "") {
       </div>
     `;
 
+    // ✅ FIXED: use currentTarget to ensure correct data-id
     card.querySelector(".show-title").addEventListener("click", e =>
-      loadEpisodes(e.target.dataset.id)
+      loadEpisodes(e.currentTarget.dataset.id)
     );
 
     fragment.appendChild(card);
@@ -242,4 +243,5 @@ async function setup() {
 }
 
 window.onload = setup;
+
 
