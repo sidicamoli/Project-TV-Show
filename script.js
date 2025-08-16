@@ -17,8 +17,10 @@ function setupEpisodeControls(episodes) {
 
   const episodeSelect = document.createElement("select");
   episodeSelect.id = "episode-select";
+
+  episodeSelect.innerHTML = `<option value="" disabled selected>Jump to episode...</option>` 
   episodeSelect.innerHTML =
-    `<option value="" disabled selected>Jump to episode...</option>` +
+    `<option value="" disabled selected>Jump to episode...</option>` 
     episodes.map(ep => {
       const code = formatEpisodeCode(ep);
       return `<option value="${code}">${code} - ${ep.name}</option>`;
@@ -122,8 +124,10 @@ function highlightText(text, query) {
 
 function populateShowDropdown(shows, query = "") {
   const showSelect = document.getElementById("showSelect");
+  showSelect.innerHTML = `<option value="" disabled selected>Select a show...</option>`
   showSelect.innerHTML =
-    `<option value="" disabled selected>Select a show...</option>` +
+    `<option value="" disabled selected>Select a show...</option>`
+
     shows.map(show => {
       const highlightedName = highlightText(show.name, query);
       return `<option value="${show.id}">${highlightedName}</option>`;
@@ -167,7 +171,8 @@ function showShowsListing() {
     if (query) {
       showSelect.style.display = "inline-block";
       populateShowDropdown(filteredShows, query);
-      // 🔥 Removed buggy auto-selection line
+      showSelect.selectedIndex = 1;
+      //  Removed buggy auto-selection line
       // showSelect.selectedIndex = 1;
     } else {
       showSelect.style.display = "none";
@@ -210,8 +215,9 @@ function renderShowCards(shows, query = "") {
       </div>
     `;
 
+    // ✅ FIXED: use currentTarget to ensure correct data-id
     card.querySelector(".show-title").addEventListener("click", e =>
-      loadEpisodes(e.target.dataset.id)
+      loadEpisodes(e.currentTarget.dataset.id)
     );
 
     fragment.appendChild(card);
@@ -237,6 +243,5 @@ async function setup() {
 }
 
 window.onload = setup;
-
 
 
