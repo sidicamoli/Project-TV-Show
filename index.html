@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TV Show Project | Mohamed Ibrahim (sidicamoli)</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="style.css" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
-
 <body>
-  <h1 class="visually-hidden">TV Show Episodes</h1>
+  <header>
+    <div id="controls" class="controls">
+      <!-- Controls will be dynamically created -->
+    </div>
+  </header>
 
-  <div class="search-container" role="region" aria-label="Page controls">
-    
-    <label for="show-select" class="visually-hidden">Choose a TV show</label>
-    <select id="show-select" aria-label="Choose a TV show">
-      <option value="" disabled selected>Loading shows…</option>
-    </select>
+  <main id="root"></main>
 
-    
-    <label for="episode-select" class="visually-hidden">Jump to episode</label>
-    <select id="episode-select" aria-label="Jump to episode">
-      <option value="all">Show All Episodes</option>
-    </select>
-
-    
-    <label for="search-input" class="visually-hidden">Search episodes</label>
-    <input type="text" id="search-input" placeholder="Search episodes..." />
-
-    
-    <p id="search-count" aria-live="polite">Displaying 0 / 0 episodes</p>
-  </div>
-
-  <main id="main" role="main">
-    <div id="root">Loading…</div>
-  </main>
+  <footer>
+    <a href="https://tvmaze.com" target="_blank">Data source: TVmaze.com</a>
+  </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
-
